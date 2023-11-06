@@ -8,6 +8,7 @@ const VARIANT_OPTIONS = ['notice', 'warning', 'success', 'error'];
 
 function ToastPlayground() {
   const [message,setMessage] = React.useState('');
+  const [variant,setVariant] = React.useState('notice');
   return (
     <div className={styles.wrapper}>
       <header>
@@ -47,6 +48,10 @@ function ToastPlayground() {
                 name="variant"
                 value={el}
                 key={index}
+                checked={el === variant}
+                onChange={event => {
+                  setVariant(event.target.value);
+                }}
               />
               {el}
             </label>
