@@ -18,6 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 let iconStyle = styles.notice;
+
 function Toast({message, variant, setToastPopUp}) {
   if(variant==='notice'){
     iconStyle = styles.notice;
