@@ -17,17 +17,29 @@ const ICONS_BY_VARIANT = {
   success: CheckCircle,
   error: AlertOctagon,
 };
-
-function Toast() {
+let iconStyle = styles.notice;
+function Toast({message, variant, setToastPopUp}) {
+  if(variant==='notice'){
+    iconStyle = styles.notice;
+  }else if(variant==='warning'){
+    iconStyle = styles.warning;
+  }else if(variant==='success'){
+    iconStyle = styles.success;
+  }else{
+    iconStyle = styles.error;
+  }
   return (
-    <div className={`${styles.toast} ${styles.notice}`}>
+    <div className={`${styles.toast} ${iconStyle}`}>
       <div className={styles.iconContainer}>
-        <Info size={24} />
+        {variant==='notice' &&<Info size={24} />}
+        {variant==='warning' &&<AlertTriangle size={24} />}
+        {variant==='success' &&<CheckCircle size={24} />}
+        {variant==='error' &&<AlertOctagon size={24} />}
       </div>
       <p className={styles.content}>
-        16 photos have been uploaded
+        {message}
       </p>
-      <button className={styles.closeButton}>
+      <button className={styles.closeButton} onClick={()=>setToastPopUp(false)}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
