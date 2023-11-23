@@ -7,8 +7,8 @@ function ToastShelf({toasts, setToastPopUp}) {
   return (
     <ol className={styles.wrapper}>
       {toasts.map((el,index)=>{
-        <li className={styles.toastWrapper}>
-        <Toast variant={el.variant} key={index} setToastPopUp={setToastPopUp} message={el.message}></Toast>
+        <li key={index} className={styles.toastWrapper}>
+        <Toast variant={el.variant} setToastPopUp={setToastPopUp}>{el.message}</Toast>
         </li>
       })}
     </ol>

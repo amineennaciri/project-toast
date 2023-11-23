@@ -19,7 +19,7 @@ const ICONS_BY_VARIANT = {
 };
 let iconStyle = styles.notice;
 
-function Toast({message, variant, setToastPopUp}) {
+function Toast({variant, setToastPopUp}) {
   if(variant==='notice'){
     iconStyle = styles.notice;
   }else if(variant==='warning'){
