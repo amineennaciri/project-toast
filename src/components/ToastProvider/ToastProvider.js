@@ -1,4 +1,5 @@
 import React, { Children } from 'react';
+import useKeydown from '../../hooks/use-keydown';
 
 export const ToastContext = React.createContext();
 
@@ -14,18 +15,12 @@ function ToastProvider({children}) {
     variant: 'success',
   }
   ]);
-  React.useEffect(()=>{
-    function handleKeyDown(event) {
-      if(event.code ==='Escape'){
-        setToast([]);
-      }
-    }
-    window.addEventListener('keydown', handleKeyDown);
-    
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    }
-  }, [])
+
+  const handleEscape = React.useCallback(()=>{
+    setToasts([]);
+  }, []);
+  useKeydown('Escape', handleEscape);
+
 
   function createToast(message,variant){
     const nextToast = [
