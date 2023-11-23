@@ -19,7 +19,7 @@ const ICONS_BY_VARIANT = {
 };
 let iconStyle = styles.notice;
 
-function Toast({variant, setToastPopUp}) {
+function Toast({id,variant, message, handleDismiss}) {
   if(variant==='notice'){
     iconStyle = styles.notice;
   }else if(variant==='warning'){
@@ -40,7 +40,7 @@ function Toast({variant, setToastPopUp}) {
       <p className={styles.content}>
         {message}
       </p>
-      <button className={styles.closeButton} onClick={()=>setToastPopUp(false)}>
+      <button className={styles.closeButton} onClick={()=> handleDismiss(id)}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
